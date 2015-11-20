@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang = 'en'>
+<head>
+	<title>Lame Jokes</title>
+	<meta charset='utf-8'>
+<style>
+	canvas {
+	border: 1px solid black;
+	 position:absolute;
+    left:0px;
+    top:0px;
+	}
+	canvas2 {
+		border: 1px solid black;
+		 position:absolute;
+		left:0px;
+		top:0px;
+	}
+	canvas3 {
+		border: 1px solid black;
+		 position:absolute;
+		left:0px;
+		top:0px;
+	}
+</style>
+<script>
+	var canvas;
+	var context;
+	var context2;
+	var context3;
+	var context4;
+	var context5;
+	var context6;
+	var context7;
+	
+	var particles; 
+	var squares;
+	var triangles;
+	var hearts;
+	var smileys;
+	
+	var timer;
+	var timer2;
+	var timer3;
+	var timer4;
+	var timer5;
+	var timer6;
+	var timer7;
+	
+	var resetTimer;
+	var resetTimer2;
+	var resetTimer3;
+	var resetTimer4;
+	var resetTimer5;
+	
+	var squares = [];
+	
+	var jokeIndex = 0;
+	
+	
+	var vx = 2;
+	var vy = 4;
+	
+	var jokes = ['Hey pal.','Feeling down?','If you are, that sucks.','Well either way I\'ve got some lame jokes for you.','Why aren\'t goats good actors?','Because they\'re always chewing the scenery!','What do you call a magician dog?','A labracadabrador!','Why do seagulls fly over the sea?','Because if they flew over the bay, they\'d be bagels!','Did you hear about the guy who got his left side cut off?','He\'s all right now!','What\'s brown and sticky?','A stick!','I\'m in a band called the Megabytes.','We haven\'t done a gig yet.','HAHAHAHAHAHAHAH RIGHT??!!','It\'s all VERY FUNNY.','That\'s all I have for today.','Hope you feel better.'];
+	
+function Jokes() {
+	context6.font = '16px Helvetica';
+	context6.strokeText(jokes[i], canvas.width/2, canvas.height/2);
+	context6.fillStyle = 'white';
+	context6.fillText(jokes[i], canvas.width/2, canvas.height/2);
+}
+function newJoke() {
+    jokeIndex += 1;
+    if (jokeIndex >= jokes.length) {
+        jokeIndex = 0;
+    }
+    return jokes[jokeIndex];
+}
+
+var fps = 100;
+function makeJokes() {
+	var i = 0;
+    setTimeout(function() {
+		context6.clearRect(0, 0, 500, 400);
+
+        requestAnimationFrame(makeJokes);
+		context6.font = 'bold 16px Helvetica';
+		context6.strokeText(jokes[jokeIndex], canvas.width/2, canvas.height/2);
+		context6.textAlign = 'center';
+		context6.fillStyle = 'white';
+		context6.fillText(jokes[jokeIndex], canvas.width/2, canvas.height/2);
+		}, 3000 / fps);
+		context6.fillStyle = 'black';
+		
+			drawTextBox();
+	if (jokes[i] >= 0) {
+		jokes[i] -= 1;
+		context6.fillStyle = 'black';
+	}
+}
+
+function drawSmiley() {
+	context2.save();
+	context2.rotate(0.2);
+	
+	context2.beginPath();
+    context2.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+    context2.moveTo(110,75);
+    context2.arc(75,75,35,0,Math.PI,false);  // Mouth (clockwise)
+    context2.moveTo(65,65);	
+    context2.arc(60,65,5,0,Math.PI*2,true);  // Left eye
+    context2.moveTo(95,65);
+    context2.arc(90,65,5,0,Math.PI*2,true);  // Right eye
+	//context2.fillStyle = 'yellow';
+	context2.strokeStyle = 'pink';
+	context2.lineWidth = 5;
+    context2.stroke();
+		//context.restore();
+}
+function clearSmile() {
+context2.clearRect(0,0,canvas2.width,canvas2.height);
+	context2.fillStyle = "rgba(255,101,247,1)";
+	//context2.strokeStyle = 'black';
+	//context2.stroke;
+	 //context2.fill();*/
+}
+
+function drawHeart() {
+	context3.save();
+	context3.rotate(0.05);
+	context3.beginPath();
+	//context.moveTo(75,40);
+	//context2.moveTo(75,200);
+	context3.moveTo(75,240)
+	context3.bezierCurveTo(75,237,70,225,50,225);
+	context3.bezierCurveTo(20,225,20,262.5,20,262.5);
+	context3.bezierCurveTo(20,280,40,302,75,320);
+	context3.bezierCurveTo(110,302,130,280,130,262.5);
+	context3.bezierCurveTo(130,262.5,130,225,100,225);
+	context3.bezierCurveTo(85,225,75,237,75,240);
+	
+	context3.fillStyle = 'yellow';
+	context3.fill();
+	
+	//context3.restore();
+}
+function clearTheHearts() {
+context3.clearRect(0,0,canvas3.width,canvas3.height);
+	context3.fillStyle = "rgba(247,255,101,1)";
+	//context3.strokeStyle = 'black';
+	//context3.stroke;
+	 //context3.fill();
+}
+
+function drawTriangle() {
+	/* context4.globalCompositeOperation = "source-over";
+	 context4.fillStyle = "rgba(0, 0, 0, 0.3)";
+	 context4.fillRect(0, 0, canvas5.width, canvas5.height);
+	 context4.globalCompositeOperation = "difference";*/
+			//context4.clearRect(0, 0, canvas4.width, canvas4.height);
+	context4.save();
+	context4.rotate(0.05);
+		context4.beginPath();
+		context4.moveTo(400,250);
+		context4.lineTo(480,250);
+		context4.lineTo(400,320);
+		context4.stroke();
+		context4.closePath();
+		context4.fillStyle = 'purple';
+		context4.fill();
+}
+function clearTriangles() {
+context4.clearRect(0,0,canvas4.width,canvas4.height);
+	 context4.fillStyle = "rgba(106,0,163,1)";
+	// context4.strokeStyle = 'black';
+	// context4.stroke;
+	// context4.fill();
+}
+
+function Square()  {
+	 //this.x = Math.random()*canvas5.width;
+	 //this.y = Math.random()*canvas5.height;
+	 this.x = 400;
+	 this.y = 100;
+	 //this.dx = Math.random()*10-5;
+	 //this.dy = Math.random()*10-5;
+	 this.vx = Math.random()*10-5;
+	 this.vy = Math.random()*10-5;
+	 var colors = ["red", "pink", "blue", "purple"];
+	 this.color = colors[Math.floor(Math.random()*colors.length)];
+ }
+ 
+ function makeSquares() {
+	squares = [];
+	for(var i = 0; i < 5; i++)
+	{
+		squares.push(new Square());
+	}
+ }
+ 
+function drawSquare() {
+	context5.globalCompositeOperation = 'source-over';
+	//changing this ^ to difference makes an even cooler 'abstract art generator'
+	context5.fillStyle = 'rgba(0, 0, 0, 0.3)';
+	context5.fillRect(0, 0, canvas5.width, canvas5.height);
+	context5.globalCompositeOperation = 'lighter';
+	 		//context5.clearRect(0, 0, canvas5.width, canvas5.height);
+
+	for (var i=0; i < squares.length; i++) {
+				context5.clearRect(0, 0, canvas5.width, canvas5.height);
+
+		var s = squares[i];
+			context5.beginPath();
+			context5.rect(s.x, s.y, 20, 20);
+			context5.stroke();
+			context5.closePath();
+			context5.fillStyle = s.color;
+			context5.fill();
+		  s.x += s.vx;
+		  s.y += s.vy;
+		 if(s.x < 0) s.x = canvas5.width+50;
+		 if(s.y < 0) s.y = canvas5.height+50;
+		 if(s.x > canvas5.width+50) s.x = -50;
+		 if(s.y > canvas5.height+50) s.y = -50;
+
+		}	
+
+}
+
+function clearSquares() {
+context5.clearRect(0,0,canvas5.width,canvas5.height);
+	 context5.fillStyle = "rgba(0,0,0,0.7)";
+	// context5.strokeStyle = 'black';
+	// context5.stroke;
+	// context5.fill();
+}
+	
+function drawTextBox() {
+	var rectX = canvas7.width/2;
+	var rectY = canvas7.height/2;
+	var rectWidth = 400;
+	var rectHeight = 25;
+	var cornerRadius = 20;
+
+	context7.fillRect(50, canvas7.height/2.2, rectWidth, rectHeight);
+
+	context7.lineJoin = "round";
+	context7.lineWidth = cornerRadius;
+
+
+	context7.fillStyle = 'black';
+	context7.fill();
+}
+	
+function Particle() {
+	this.x = canvas.width/2;
+	this.y = canvas.height/2;
+	this.vx = Math.random()*10-5;
+	this.vy = Math.random()*10-5;  
+	var colors = ['#9966ff', '#e566ff', '#ff66cc', '#ff6680','#66ff99','#66ffe6','#6680ff','#33ccff']
+	this.color = colors[Math.floor(Math.random()*colors.length)];
+	this.radius = 30;
+}
+
+function makeParticles() {
+	particles = [];
+	for (var i=0; i < 30; i++) {
+		particles.push(new Particle());
+	}
+}
+
+
+function moveParticles() {
+	context.globalCompositeOperation = 'source-over';
+	//changing this ^ to difference makes an even cooler 'abstract art generator'
+	context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	context.globalCompositeOperation = 'difference';
+	//change this^ thingy to make a cool effect dude
+	//xor works cool for this, so is difference
+	
+	for (var i=0; i < particles.length; i++) {
+		var p = particles[i];
+		context.beginPath();
+		context.arc(p.x, p.y, p.radius, 0, degreesToRadians(360), true);
+		if (p.radius === 0) {
+		break;
+	}
+		context.fillStyle = p.color;
+		context.fill();
+		p.x += p.vx;
+		p.y += p.vy;
+		if (p.x < -50) {
+			p.x = canvas.width+50;
+		}
+		if (p.x > canvas.width+50) {
+			p.x = -50;
+		}
+		if (p.y < -50) {
+			p.y = canvas.height+50;
+		}
+		if (p.y > canvas.height+50) {
+			p.y = -50;
+		}
+	p.radius -= 1;
+
+	
+	}
+	
+	}
+	
+
+function degreesToRadians(degrees) {
+	return (degrees * Math.PI)/180;
+}
+
+
+window.onload = function() {
+	canvas = document.getElementById('canvas');
+	context = canvas.getContext('2d');
+	//particles
+	context2 = canvas2.getContext('2d');
+	//smiley
+	context3 = canvas3.getContext('2d');
+	//heart
+	context4 = canvas4.getContext('2d');
+	//triangle
+	context5 = canvas5.getContext('2d');
+	//squares
+	context6 = canvas6.getContext('2d');
+	//jokes
+	context7 = canvas7.getContext('2d');
+	//textbox
+
+		makeParticles();
+		timer = setInterval(moveParticles, 45);
+		resetTimer = setInterval(makeParticles, 3000);
+		//changing that^ affects how long it takes for the firework to explode again.
+		
+		drawTextBox();
+		
+		makeJokes();
+		timer3 = setInterval(newJoke, 3000);
+		
+		makeSquares();
+		timer4 = setInterval(drawSquare, 50);
+		resetTimer2 = setInterval(makeSquares, 3000);
+
+		timer2 = setInterval(drawHeart, 50);
+		resetTimer3 = setInterval(clearTheHearts, 60);
+		
+		timer5 = setInterval(drawTriangle, 50);
+		resetTimer4 = setInterval(clearTriangles, 60);
+		
+		timer6 = setInterval(drawSmiley, 50);
+		resetTimer5 = setInterval(clearSmile, 60);
+
+}
+</script>
+</head>
+<body>
+	<canvas id='canvas' width='500' height='400' style='z-index: 1'></canvas>
+	<canvas id='canvas2' width='500' height='400' style='z-index: 2'></canvas>
+	<canvas id='canvas3' width='500' height='400' style='z-index: 3'></canvas>
+	<canvas id='canvas4' width='500' height='400' style='z-index: 4'></canvas>
+	<canvas id='canvas5' width='500' height='400' style='z-index: 5'></canvas>
+	<canvas id='canvas6' width='500' height='400' style='z-index: 7'></canvas>
+	<canvas id='canvas7' width='500' height='400' style='z-index: 6'></canvas>
+</body>
+</html>
